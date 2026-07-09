@@ -26,8 +26,9 @@ form.addEventListener("submit", (event)=> {
     let years = Number(numberOfYears.value);
     let resultsHTML = calculatedCompoundInterestCalculator(startNum, rate, years).map( (year, index) => {
         let formattedIndex = index + 1;
-        return "Year " + formattedIndex + " " + "$" + year
-    }).join(", ");
+        let fixedYear = Number(year).toFixed(2);
+        return "Year " + formattedIndex + " " + "$" + fixedYear
+    }).join("<br>");
     display.innerHTML = resultsHTML;
 });
 

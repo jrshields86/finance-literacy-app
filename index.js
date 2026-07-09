@@ -3,6 +3,8 @@ const startingPrincipal = document.getElementById("starting-principal");
 const annualRate = document.getElementById("annual-rate");
 const numberOfYears = document.getElementById("number-of-years");
 const form = document.getElementById("input-form")
+const display = document.getElementById("results-display");
+
 
 const calculatedCompoundInterestCalculator = (principal, rate, years) => {
 
@@ -22,6 +24,10 @@ form.addEventListener("submit", (event)=> {
     let startNum = Number(startingPrincipal.value);
     let rate = Number(annualRate.value)/100;
     let years = Number(numberOfYears.value);
-    console.log(calculatedCompoundInterestCalculator(startNum, rate, years));
+    let resultsHTML = calculatedCompoundInterestCalculator(startNum, rate, years).map( (year, index) => {
+        let formattedIndex = index + 1;
+        return "Year " + formattedIndex + " " + "$" + year
+    }).join(", ");
+    display.innerHTML = resultsHTML;
 });
 

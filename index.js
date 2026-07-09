@@ -12,4 +12,6 @@ const calculatedCompoundInterestCalculator = (principal, rate, years) => {
     return yearlyTotalArray;
 };
 
+
+
 console.log(calculatedCompoundInterestCalculator(500, .05, 10));

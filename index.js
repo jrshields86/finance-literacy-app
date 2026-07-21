@@ -40,9 +40,9 @@ const calculateRuleOf72 = (rate) => 72/rate;
 
 ruleOf72Form.addEventListener("submit", (event) => {
     event.preventDefault();
-    let resultsHTML = calculateRuleOf72(ruleOf72Rate.value);
+    let resultsHTML = calculateRuleOf72(ruleOf72Rate.value).toFixed(2);
 
-    ruleOf72Display.innerHTML.toFixed(2) = resultsHTML;
+    ruleOf72Display.innerHTML = resultsHTML;
 });
 
 

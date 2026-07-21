@@ -1,9 +1,13 @@
 
-const startingPrincipal = document.getElementById("starting-principal");
-const annualRate = document.getElementById("annual-rate");
-const numberOfYears = document.getElementById("number-of-years");
-const form = document.getElementById("input-form")
-const display = document.getElementById("results-display");
+const compoundStartingPrincipal = document.getElementById("compund-starting-principal");
+const compundAnnualRate = document.getElementById("compund-annual-rate");
+const compoundNumberOfYears = document.getElementById("compund-number-of-years");
+const compoundInterestForm = document.getElementById("compound-interest-input-form")
+const compoundInterstDisplay = document.getElementById("compound-interest-results-display");
+
+const ruleOf72Form = document.getElementById("rule-of-72-input-form");
+const ruleOf72Rate = document.getElementById("rule-of-72-rate");
+const ruleOf72Display = document.getElementById("rule-of-72-result-display");
 
 
 const calculatedCompoundInterestCalculator = (principal, rate, years) => {
@@ -19,16 +23,27 @@ const calculatedCompoundInterestCalculator = (principal, rate, years) => {
     return yearlyTotalArray;
 };
 
-form.addEventListener("submit", (event)=> {
+compoundInterestForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    let startNum = Number(startingPrincipal.value);
-    let rate = Number(annualRate.value)/100;
-    let years = Number(numberOfYears.value);
+    let startNum = Number(compoundStartingPrincipal.value);
+    let rate = Number(compundAnnualRate.value)/100;
+    let years = Number(compoundNumberOfYears.value);
     let resultsHTML = calculatedCompoundInterestCalculator(startNum, rate, years).map( (year, index) => {
         let formattedIndex = index + 1;
         let fixedYear = Number(year).toFixed(2);
         return "Year " + formattedIndex + " " + "$" + fixedYear
     }).join("<br>");
-    display.innerHTML = resultsHTML;
+    compoundInterstDisplay.innerHTML = resultsHTML;
 });
+
+const calculateRuleOf72 = (rate) => 72/rate;
+
+ruleOf72Form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    let resultsHTML = calculateRuleOf72(ruleOf72Rate.value);
+
+    ruleOf72Display.innerHTML.toFixed(2) = resultsHTML;
+});
+
+
 
